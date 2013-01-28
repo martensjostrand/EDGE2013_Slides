@@ -1,0 +1,10 @@
+.step {
+	width: 1000px;
+	height: 500px;
+	border: 1px solid #eee;
+}
+
+.horror {
+	font-family: 'Comic Sans, Comic Sans MS, cursive';
+	color: #D6007D;
+}
