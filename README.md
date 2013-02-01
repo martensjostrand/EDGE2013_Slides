@@ -3,8 +3,8 @@ Object Calistenics
 
 Impress.js slides for Netlight EDGE ACADEMY 2013.
 
+See wiki https://github.com/martensjostrand/EDGE2013_Slides/wiki for examples.
+
 TODO:
-* Horror example for each rule.
-* Example of 'solution' for each rule.
 * Add all rules to slides.
 
