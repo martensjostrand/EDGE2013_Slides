@@ -1,10 +1,39 @@
+body {
+	background: rgb(215, 215, 215);
+	background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
+	background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+	background: -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+	background: -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+	background: -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+	background: radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+	font-family: "PT Sans, Helvetica";
+}
+
+.future, .past {
+	opacity: 0.4;
+}
+h1, h2, h3 {
+	padding: 0;
+	margin: 0;
+}
 .step {
 	width: 1000px;
-	height: 500px;
-	border: 1px solid #eee;
+	height: 600px;
+	font-size: 3em;
+}
+
+.slide {
+	background: rgb(240, 240, 240);
+	border-radius: 40px;
+	padding: 40px;
 }
 
 .horror {
+	-webkit-transform: rotate(-10deg);
+	-moz-transform: rotate(-10deg);
+	-ms-transform: rotate(-10deg);
+	-o-transform: rotate(-10deg);
+	transform: rotate(-10deg);
 	font-family: 'Comic Sans, Comic Sans MS, cursive';
-	color: #D6007D;
+	color: #5C005C;
 }
