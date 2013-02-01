@@ -28,6 +28,18 @@ h1, h2, h3 {
 	padding: 40px;
 }
 
+.step img {
+	margin-left: 100px;
+}
+
+.step.sub.future, .step.sub.past {
+	display: none;
+}
+
+.step.sub.active {
+	display:block;
+}
+
 .horror {
 	-webkit-transform: rotate(-10deg);
 	-moz-transform: rotate(-10deg);
