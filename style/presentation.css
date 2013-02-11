@@ -15,6 +15,7 @@ body {
 
 .step > strong {
 	display: block;
+	margin-bottom: 30px;
 	text-align: center;
 	opacity: 0.3;
 	font-size: 2em;
@@ -23,7 +24,6 @@ body {
 h1, h2, h3 {
 	padding: 0;
 	margin: 0;
-	margin-top: 30px;
 	text-align: center;
 	color: #222;
 }
@@ -36,17 +36,13 @@ h1, h2, h3 {
 
 ul,
 ol {
-	font-size: 0.7em;
+	font-size: 0.6em;
 }
 
 .slide {
 	background: rgb(240, 240, 240);
 	border-radius: 40px;
 	padding: 40px;
-}
-
-.step img {
-	margin-left: 100px;
 }
 
 .step.sub.future, .step.sub.past {
