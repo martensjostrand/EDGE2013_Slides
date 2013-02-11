@@ -74,13 +74,13 @@
       <div class="step" data-x="4500" data-y="2500" data-rotate="90">
         <pre>
           <code data-language="java">
-class Board{
+class Board {
   private int[][] data = ...
   
-  public String toString(){
+  public String toString() {
     StringBuffer buffer = new StringBuffer();
-    for(int i = 0; i&gt;10; i++){
-      for(int j = 0; j&gt;10; j++){
+    for(int i = 0; i&lt;10; i++) {
+      for(int j = 0; j&lt;10; j++) {
         buffer.append(data[i][j]);
         buffer.append("\n");
       }
@@ -94,19 +94,19 @@ class Board{
       <div class="step" data-x="4500" data-y="4000" data-rotate="90">
         <pre>
           <code data-language="java">
-class Board{
+class Board {
   private int[][] data = ...
-  public String toString(){
+  public String toString() {
     StringBuffer buffer = new StringBuffer();
     collectRows(buffer);
     return buffer.toString();
   }
-  private collectRows(StringBuffer buffer){
-    for(int i = 0; i&gt;10; i++)
+  private collectRows(StringBuffer buffer) {
+    for(int i = 0; i &lt; 10; i++)
       collectRow(buffer, i);
   }
-  private collectRow(StringBuffer buffer, int row){
-    for(int j = 0; j&gt;10; j++)
+  private collectRow(StringBuffer buffer, int row) {
+    for(int j = 0; j &lt; 10; j++)
       buffer.append(data[row][j]);
       
     buffer.append("\n");
@@ -125,11 +125,11 @@ class Board{
           <code data-language="java">
 status = service.someOperation();
 
-if(status == DONE){
+if(status == DONE) {
   doSomething();
-} else if(status == NOT_FOUND && time == today){
+} else if(status == NOT_FOUND && time == today) {
   doSomethingUrgent();
-} else if(status == NOT_FOUND){
+} else if(status == NOT_FOUND) {
   doSomethingElse();
 } else {
   reportError();
@@ -144,12 +144,12 @@ if(status == DONE){
 Action action = service.someOperation();
 action.perform();
 
-interface Action{
+interface Action {
   void perform();
 }
 
-class NotFoundAction implements Action{
-  public void perform(){
+class NotFoundAction implements Action {
+  public void perform() {
      // Do stuff
   }
 }
@@ -164,7 +164,7 @@ class NotFoundAction implements Action{
       <div class="step" data-x="6500" data-y="2500" data-rotate="90">
         <pre>
           <code data-language="java">
-interface MyTime{
+interface MyTime {
   public setHour(int hour)
   public setYear(int year)
 }            
@@ -175,16 +175,16 @@ interface MyTime{
       <div class="step" data-x="6500" data-y="4000" data-rotate="90">
         <pre>
           <code data-language="java">
-class Year{
-  public static valueOf(int year){/* ... */}
-  public boolean isLeap(){/* ... */}
+class Year {
+  public static valueOf(int year) { /* ... */ }
+  public boolean isLeap() { /* ... */ }
 }
 
-class Hour{
-  public static valueOf(int hour){/* ... */}
+class Hour { 
+  public static valueOf(int hour) { /* ... */ }
 }
 
-interface MyTime{
+interface MyTime {
   public set(Hour hour)
   public set(Year year)
 }
@@ -199,9 +199,9 @@ interface MyTime{
       <div class="step" data-x="7500" data-y="2500" data-rotate="90">
         <pre>
           <code data-language="java">
-public class Person{
+public class Person {
   List&lt;Groups&gt; groups;
-  public join(Group group){
+  public join(Group group) {
     groups.add(group);
   }
 }           
@@ -212,13 +212,13 @@ public class Person{
       <div class="step" data-x="7500" data-y="4000" data-rotate="90">
         <pre>
           <code data-language="java">
-public class GroupMemberships{
+public class GroupMemberships {
   List&lt;Group&gt; memberships = ...;
 }
 
-public class Person{
+public class Person {
   GroupMemberships memberships = ...
-  public join(Group group){
+  public join(Group group) {
     memberships.join(group);
   }
 }
@@ -242,9 +242,9 @@ class Board {
     Piece current;
   }
 
-  String boardRepresentation(){
+  String boardRepresentation() {
     StringBuffer buffer = new StringBuffer();
-    for(Location location : squares()){
+    for(Location location : squares()) {
       buffer.append(location.current.representation);
     }
     return buffer.toString();
@@ -260,19 +260,19 @@ class Board {
 class Board {
   class Piece {
     String representation;
-    void addTo(StringBuffer buffer){
+    void addTo(StringBuffer buffer) {
       buffer.append(representation);
     }
   }
   class Location {
     Piece current;
-    void addTo(StringBuffer buffer){
+    void addTo(StringBuffer buffer) {
       current.addTo(buffer);
     }
   }    
-  String boardRepresentation(){
+  String boardRepresentation() {
     StringBuffer buffer = new StringBuffer();
-    for(Location location : squares()){
+    for(Location location : squares()) {
       location.addTo(buffer);
     }
     return buffer.toString();
@@ -291,7 +291,7 @@ class Board {
 ManagementBean mgmntBn = ...
 MutableButton mtblBtn = ...
 
-if(mgntBn.isManager() && mtblBtn.isPressed()){
+if(mgntBn.isManager() && mtblBtn.isPressed()) {
   // Cut costs.
 }
           </code>
@@ -304,11 +304,11 @@ if(mgntBn.isManager() && mtblBtn.isPressed()){
 ManagementBean managementBean = ...
 MutableAgentButton mutableButton = ...
 
-boolean orderedByManager(){
+boolean orderedByManager() {
   return managementBean.isManager() && mutableButton.isPressed();
 }
 
-if(orderedByManager()){
+if(orderedByManager()) {
   // Cut costs
 }
           </code>
@@ -382,12 +382,12 @@ class Person {
 class Person {
   private String name;
   private Long id;
-  Long getId(){ return id;}
+  Long getId() { return id; }
 }
 
 class PersonDatabase {
   HashMap&lt;Long, Person&gt; persons = ...
-  public void addPerson(Person p){
+  public void addPerson(Person p) {
     map.put(p.getId(), p);
   }
 }            
@@ -402,18 +402,18 @@ class Person {
   private String name;
   private Long id;
 
-  addTo(PersonStorage storage){
+  addTo(PersonStorage storage) {
     storage.add(id, this);
   }
 }
 
 class PersonDatabase {
   HashMap&lt;Long, Person&gt; persons = ...
-  public void addPerson(Person p){
+  public void addPerson(Person p) {
    p.addTo(this);
   }
 
-  public add(Long id, Person p){
+  public add(Long id, Person p) {
     persons.put(id, p);
   }
 }            
