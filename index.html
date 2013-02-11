@@ -3,25 +3,26 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=1024" />
-    <link href="style/presentation.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Oxygen+Mono|Gentium+Basic|Roboto|Fjalla+One|Junge|Julius+Sans+One|Archivo+Narrow|Quattrocento+Sans' rel='stylesheet' type='text/css'>
     <link href="style/rainbow/github.css" rel="stylesheet">
+    <link href="style/presentation.css" rel="stylesheet">
   </head>
   <body>
     <div id="impress" data-transition-duration="600">
-      
+
       <div class="step slide" data-x="0" data-y="0">
-        <h2>Nine Steps from Outer Space</h2>
-        <p>...or Nine Steps to Writing Better Code</p>
+        <h2>Nine Steps from Outer&nbsp;Space</h2>
+        <p>... or Nine Steps to <em>Writing Better Code</em></p>
       </div>
-      
+
       <div class="step slide" data-x="0" data-y="700">
-        <h2>Who we are and why?</h2>
+        <h2>Who are we, and why?</h2>
         <ul>
-          <li>Sebastian Lundstr&ouml;m</li>
-          <li>M&aring;rten Sj&ouml;strand</li>
+          <li>Sebastian Lundström</li>
+          <li>Mårten Sjöstrand</li>
         </ul>
       </div>
-      
+
       <div class="step slide" data-x="0" data-y="1400">
         <h2>Write better code!</h2>
         <p><span class="fadeIn">Always!</span></p>
@@ -29,18 +30,18 @@
 
 
       <div class="step" data-x="2000" data-y="0" data-scale="2">
-        <h2>Real world hazzle</h2>
+        <h2>Real World Hazzle</h2>
         <ul>
           <li>Huge classes/files/packages</li>
           <li>Tight coupling</li>
-          <li>Hard (or impossible) to read</li>
+          <li>Difficult to read</li>
           <li>Low cohesion</li>
           <li>...and stuff that doesn't have a name yet</li>
         </ul>
       </div>
 
       <div class="step" data-x="2000" data-y="1500" data-scale="2">
-        <h2>Nine rules</h2>
+        <h2>Nine Rules</h2>
         <ol>
           <li>One level of indentation per method</li>
           <li>Don't use the ELSE keyword</li>
@@ -54,372 +55,333 @@
         </ol>
       </div>
 
-      <div class="step" data-x="0" data-y="0" data-scale="30">      
+      <div class="step" data-x="0" data-y="0" data-scale="30">
         <h2>Just one small thing...</h2>
       </div>
 
       <div class="step" data-x="3500" data-y="1000" data-scale="1" data-rotate="90">
-        <p>Applying theses 9 rules is really hard.</p>
+        <p>Applying these  rules is really hard.</p>
       </div>
-      
+
       <div class="step sub" data-x="3350" data-y="1040" data-scale="1" data-rotate="90">
-        <img src="img/femmyror.png">
         <p>That's why we're here!</p>
       </div>
 
       <div class="step" data-x="4500" data-y="1000" data-rotate="90">
-        <h2>1. One level of indentation per method</h2>
+        <strong>1</strong>
+        <h2>One level of indentation per method</h2>
       </div>
-      
-      <div class="step" data-x="4500" data-y="2500" data-rotate="90">
-        <pre>
-          <code data-language="java">
-class Board {
-  private int[][] data = ...
-  
-  public String toString() {
-    StringBuffer buffer = new StringBuffer();
-    for(int i = 0; i&lt;10; i++) {
-      for(int j = 0; j&lt;10; j++) {
-        buffer.append(data[i][j]);
-        buffer.append("\n");
-      }
-    }
-  }
-}
-          </code>
-        </pre>
-      </div>
-      
-      <div class="step" data-x="4500" data-y="4000" data-rotate="90">
-        <pre>
-          <code data-language="java">
-class Board {
-  private int[][] data = ...
-  public String toString() {
-    StringBuffer buffer = new StringBuffer();
-    collectRows(buffer);
-    return buffer.toString();
-  }
-  private collectRows(StringBuffer buffer) {
-    for(int i = 0; i &lt; 10; i++)
-      collectRow(buffer, i);
-  }
-  private collectRow(StringBuffer buffer, int row) {
-    for(int j = 0; j &lt; 10; j++)
-      buffer.append(data[row][j]);
-      
-    buffer.append("\n");
-  }
-}
-          </code>
-        </pre>
-      </div>
-      
-      <div class="step" data-x="5500" data-y="1000" data-rotate="90">
-        <h2>2. Don't use the ELSE keyword</h2>
-      </div>
-      
-      <div class="step" data-x="5500" data-y="2500" data-rotate="90">
-        <pre>
-          <code data-language="java">
-status = service.someOperation();
 
-if(status == DONE) {
-  doSomething();
-} else if(status == NOT_FOUND && time == today) {
-  doSomethingUrgent();
-} else if(status == NOT_FOUND) {
-  doSomethingElse();
-} else {
-  reportError();
+      <div class="step" data-x="4500" data-y="2500" data-rotate="90">
+        <pre><code data-language="java">class Board {
+    private int[][] data = /* ... */
+
+    public String toString() {
+        StringBuffer buffer = new StringBuffer();
+        for (int i = 0; i &lt; 10; i++) {
+            for (int j = 0; j &lt; 10; j++) {
+                buffer.append(data[i][j]);
+                buffer.append("\n");
+            }
+        }
+    }
 }
-          </code>
-        </pre>
+</code></pre>
       </div>
-      
+
+      <div class="step" data-x="4500" data-y="4000" data-rotate="90">
+        <pre><code data-language="java">class Board {
+    private int[][] data = /* ... */;
+    public String toString() {
+        StringBuffer buffer = new StringBuffer();
+        collectRows(buffer);
+        return buffer.toString();
+    }
+    private collectRows(StringBuffer buffer) {
+        for (int i = 0; i &lt; 10; i++) {
+            collectRow(buffer, i);
+        }
+    }
+    private collectRow(StringBuffer buffer, int row) {
+        for (int j = 0; j &lt; 10; j++) {
+            buffer.append(data[row][j]);
+        }
+        buffer.append("\n");
+    }
+}
+</code></pre>
+      </div>
+
+      <div class="step" data-x="5500" data-y="1000" data-rotate="90">
+        <strong>2</strong>
+        <h2>Don't use the ELSE keyword</h2>
+      </div>
+
+      <div class="step" data-x="5500" data-y="2500" data-rotate="90">
+        <pre><code data-language="java">status = service.someOperation();
+if (status == DONE) {
+    doSomething();
+} else if (status == NOT_FOUND && time == today) {
+    doSomethingUrgent();
+} else if (status == NOT_FOUND) {
+    doSomethingElse();
+} else {
+    reportError();
+}</code></pre>
+      </div>
+
       <div class="step" data-x="5500" data-y="4000" data-rotate="90">
-        <pre>
-          <code data-language="java">
-Action action = service.someOperation();
+        <pre><code data-language="java">Action action = service.someOperation();
 action.perform();
 
 interface Action {
-  void perform();
+    void perform();
 }
 
 class NotFoundAction implements Action {
-  public void perform() {
-     // Do stuff
-  }
+    public void perform() {
+        // Do stuff.
+    }
 }
-          </code>
-        </pre>  
+</code></pre>
       </div>
 
       <div class="step" data-x="6500" data-y="1000" data-rotate="90">
-        <h2>3. Wrap all primitives and Strings</h2>
+        <strong>3</strong>
+        <h2>Wrap all primitives and Strings</h2>
       </div>
-      
+
       <div class="step" data-x="6500" data-y="2500" data-rotate="90">
-        <pre>
-          <code data-language="java">
-interface MyTime {
-  public setHour(int hour)
-  public setYear(int year)
-}            
-          </code>
-        </pre>
+        <pre><code data-language="java">interface MyTime {
+    public setHour(int hour);
+    public setYear(int year);
+}
+</code></pre>
       </div>
-      
+
       <div class="step" data-x="6500" data-y="4000" data-rotate="90">
-        <pre>
-          <code data-language="java">
-class Year {
-  public static valueOf(int year) { /* ... */ }
-  public boolean isLeap() { /* ... */ }
+        <pre><code data-language="java">class Year {
+    public static valueOf(int year) { /* ... */ }
+    public boolean isLeap() { /* ... */ }
 }
 
-class Hour { 
-  public static valueOf(int hour) { /* ... */ }
+class Hour {
+    public static valueOf(int hour) { /* ... */ }
 }
 
 interface MyTime {
-  public set(Hour hour)
-  public set(Year year)
+    public set(Hour hour);
+    public set(Year year);
 }
-          </code>
-        </pre>
+</code></pre>
       </div>
-      
+
       <div class="step" data-x="7500" data-y="1000" data-rotate="90">
-        <h2>4. First class collections</h2>
+        <strong>4</strong>
+        <h2>First class collections</h2>
       </div>
-      
+
       <div class="step" data-x="7500" data-y="2500" data-rotate="90">
-        <pre>
-          <code data-language="java">
-public class Person {
-  List&lt;Groups&gt; groups;
-  public join(Group group) {
-    groups.add(group);
-  }
-}           
-          </code>
-        </pre>
+        <pre><code data-language="java">public class Person {
+    List&lt;Groups&gt; groups;
+    public join(Group group) {
+        groups.add(group);
+    }
+}
+</code></pre>
       </div>
-      
+
       <div class="step" data-x="7500" data-y="4000" data-rotate="90">
-        <pre>
-          <code data-language="java">
-public class GroupMemberships {
-  List&lt;Group&gt; memberships = ...;
+        <pre><code data-language="java">public class GroupMemberships {
+    List&lt;Group&gt; memberships = /* ... */;
 }
 
 public class Person {
-  GroupMemberships memberships = ...
-  public join(Group group) {
-    memberships.join(group);
-  }
+    GroupMemberships memberships = /* ... */;
+    public join(Group group) {
+        memberships.join(group);
+    }
 }
-          </code>
-        </pre>
+</code></pre>
       </div>
-      
+
       <div class="step" data-x="8500" data-y="1000" data-rotate="90">
-        <h2>5. One dot per line</h2>
+        <strong>5</strong>
+        <h2>One dot per line</h2>
       </div>
 
       <div class="step" data-x="8500" data-y="2500" data-rotate="90">
-        <pre>
-          <code data-language="java">
-class Board {
-  class Piece {
-    String representation;
-  }
-
-  class Location {
-    Piece current;
-  }
-
-  String boardRepresentation() {
-    StringBuffer buffer = new StringBuffer();
-    for(Location location : squares()) {
-      buffer.append(location.current.representation);
+        <pre><code data-language="java">class Board {
+    class Piece {
+        String representation;
     }
-    return buffer.toString();
-  }
+
+    class Location {
+        Piece current;
+    }
+
+    String boardRepresentation() {
+        StringBuffer buffer = new StringBuffer();
+        for (Location location : squares()) {
+            buffer.append(location.current.representation);
+        }
+        return buffer.toString();
+    }
 }
-          </code>
-        </pre>
+</code></pre>
       </div>
 
       <div class="step" data-x="8500" data-y="4000" data-rotate="90">
-        <pre>
-          <code data-language="java">
-class Board {
-  class Piece {
-    String representation;
-    void addTo(StringBuffer buffer) {
-      buffer.append(representation);
+        <pre><code data-language="java">class Board {
+    class Piece {
+        String representation;
+        void addTo(StringBuffer buffer) {
+            buffer.append(representation);
+        }
     }
-  }
-  class Location {
-    Piece current;
-    void addTo(StringBuffer buffer) {
-      current.addTo(buffer);
+    class Location {
+        Piece current;
+        void addTo(StringBuffer buffer) {
+            current.addTo(buffer);
+        }
     }
-  }    
-  String boardRepresentation() {
-    StringBuffer buffer = new StringBuffer();
-    for(Location location : squares()) {
-      location.addTo(buffer);
+    String boardRepresentation() {
+        StringBuffer buffer = new StringBuffer();
+        for (Location location : squares()) {
+            location.addTo(buffer);
+        }
+        return buffer.toString();
     }
-    return buffer.toString();
-  }
-}                  
-          </code>
-        </pre>
-      </div>      
+}
+</code></pre>
+      </div>
       <div class="step" data-x="9500" data-y="1000" data-rotate="90">
-        <h2>6. Don't abbreviate</h2>
+        <strong>6</strong>
+        <h2>Don't abbreviate</h2>
       </div>
 
       <div class="step" data-x="9500" data-y="2500" data-rotate="90">
-        <pre>
-          <code data-language="java">
-ManagementBean mgmntBn = ...
-MutableButton mtblBtn = ...
+        <pre><code data-language="java">ManagementBean mgmntBn = /* ... */;
+MutableButton mtblBtn = /* ... */;
 
-if(mgntBn.isManager() && mtblBtn.isPressed()) {
-  // Cut costs.
+if (mgntBn.isManager() && mtblBtn.isPressed()) {
+    // Cut costs.
 }
-          </code>
-        </pre>
+</code></pre>
       </div>
 
       <div class="step" data-x="9500" data-y="4000" data-rotate="90">
-        <pre>
-          <code data-language="java">
-ManagementBean managementBean = ...
-MutableAgentButton mutableButton = ...
+        <pre><code data-language="java">ManagementBean managementBean = /* ... */;
+MutableAgentButton mutableButton = /* ... */;
 
 boolean orderedByManager() {
-  return managementBean.isManager() && mutableButton.isPressed();
+    return managementBean.isManager() && mutableButton.isPressed();
 }
 
-if(orderedByManager()) {
-  // Cut costs
+if (orderedByManager()) {
+    // Cut costs.
 }
-          </code>
-        </pre>
+</code></pre>
       </div>
-      
+
       <div class="step" data-x="10500" data-y="1000" data-rotate="90">
-        <h2>7. Keep all entities small</h2>
+        <strong>7</strong>
+        <h2>Keep all entities small</h2>
       </div>
-      
+
       <div class="step" data-x="10500" data-y="2500" data-rotate="90">
-        <pre>
-          <code data-language="java">
-/* 
- * THERE WILL BE NO 1000 LOC EXAMPLE
- * YOU DON'T WAN'T TO SEE THIS
+        <pre><code data-language="java">/*
+ * THERE WILL BE NO 1000 LOC EXAMPLE.
+ * YOU DON'T WANT TO SEE IT.
  */
-          </code>
-        </pre>
-      </div>      
-                  
+</code></pre>
+      </div>
+
       <div class="step" data-x="11500" data-y="1000" data-rotate="90">
-        <h2>8. No class with more than two instance variables</h2>
+        <strong>8</strong>
+        <h2>No class with more than two instance variables</h2>
       </div>
 
       <div class="step" data-x="11500" data-y="2500" data-rotate="90">
-        <pre>
-          <code data-language="java">
-class Person {
-  String firstName;
-  String lastName;
-  int birthYear;
-  int birthMonth;
-  int birthDay;
-  /* ... */
+        <pre><code data-language="java">class Person {
+    String firstName;
+    String lastName;
+    int birthYear;
+    int birthMonth;
+    int birthDay;
+    /* ... */
 }
-          </code>
-        </pre>
+</code></pre>
       </div>
 
       <div class="step" data-x="11500" data-y="4000" data-rotate="90">
-        <pre>
-          <code data-language="java">
-class Name {
-  String firstName;
-  String lastName;
+        <pre><code data-language="java">class Name {
+    String firstName;
+    String lastName;
 }
 
 class Date {
-  int year;
-  int month;
-  int day;
+    int year;
+    int month;
+    int day;
 }
 
 class Person {
-  Name name;
-  Date birthDate;
-  /* ... */
+    Name name;
+    Date birthDate;
+    /* ... */
 }
-          </code>
-        </pre>
-      </div> 
-            
+</code></pre>
+      </div>
+
       <div class="step" data-x="12500" data-y="1000" data-rotate="90">
-        <h2>9. No getters, setters or properties</h2>
+        <strong>9</strong>
+        <h2>No getters, setters or properties</h2>
       </div>
 
       <div class="step" data-x="12500" data-y="2500" data-rotate="90">
-        <pre>
-          <code data-language="java">
-class Person {
-  private String name;
-  private Long id;
-  Long getId() { return id; }
+        <pre><code data-language="java">class Person {
+    private String name;
+    private Long id;
+
+    Long getId() {
+        return id;
+    }
 }
 
 class PersonDatabase {
-  HashMap&lt;Long, Person&gt; persons = ...
-  public void addPerson(Person p) {
-    map.put(p.getId(), p);
-  }
-}            
-          </code>
-        </pre>
+    HashMap&lt;Long, Person&gt; persons = ...
+    public void addPerson(Person p) {
+        map.put(p.getId(), p);
+    }
+}
+</code></pre>
       </div>
 
       <div class="step" data-x="12500" data-y="4000" data-rotate="90">
-        <pre>
-          <code data-language="java">
+        <pre><code data-language="java">
 class Person {
-  private String name;
-  private Long id;
+    private String name;
+    private Long id;
 
-  addTo(PersonStorage storage) {
-    storage.add(id, this);
-  }
+    public addTo(PersonStorage storage) {
+        storage.add(id, this);
+    }
 }
 
 class PersonDatabase {
-  HashMap&lt;Long, Person&gt; persons = ...
-  public void addPerson(Person p) {
-   p.addTo(this);
-  }
+    HashMap&lt;Long, Person&gt; persons = /* ... */;
 
-  public add(Long id, Person p) {
-    persons.put(id, p);
-  }
-}            
-          </code>
-        </pre>
-      </div>     
+    public void addPerson(Person p) {
+        p.addTo(this);
+    }
+
+    public add(Long id, Person p) {
+        persons.put(id, p);
+    }
+}
+</code></pre>
+      </div>
 
     </div>
 
@@ -428,5 +390,5 @@ class PersonDatabase {
     <script src="js/rainbow/rainbow.js"></script>
     <script src="js/rainbow/java.js"></script>
   </body>
-  
+
 </html>

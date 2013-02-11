@@ -6,20 +6,37 @@ body {
 	background: -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
 	background: -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
 	background: radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-	font-family: "PT Sans, Helvetica";
+	font-family: "Fjalla One", "Gentium Basic", "Junge", "Oxygen Mono", "Roboto", "PT Sans", "Helvetica";
 }
 
 .future, .past {
 	opacity: 0.4;
 }
+
+.step > strong {
+	display: block;
+	text-align: center;
+	opacity: 0.3;
+	font-size: 2em;
+}
+
 h1, h2, h3 {
 	padding: 0;
 	margin: 0;
+	margin-top: 30px;
+	text-align: center;
+	color: #222;
 }
+
 .step {
 	width: 1000px;
 	height: 600px;
-	font-size: 3em;
+	font-size: 4em;
+}
+
+ul,
+ol {
+	font-size: 0.7em;
 }
 
 .slide {
@@ -40,12 +57,10 @@ h1, h2, h3 {
 	display:block;
 }
 
-.horror {
-	-webkit-transform: rotate(-10deg);
-	-moz-transform: rotate(-10deg);
-	-ms-transform: rotate(-10deg);
-	-o-transform: rotate(-10deg);
-	transform: rotate(-10deg);
-	font-family: 'Comic Sans, Comic Sans MS, cursive';
-	color: #5C005C;
+pre {
+	font-size: 22px;
+	border-radius: 30px;
+	padding: 1em;
+	box-shadow: 5px 5px 5px #888;
+	line-height: 1.2em;
 }
