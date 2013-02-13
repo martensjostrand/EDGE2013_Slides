@@ -25,7 +25,6 @@
 
       <div class="step slide" data-x="0" data-y="1400">
         <h2>Write better code!</h2>
-        <p><span class="fadeIn">Always!</span></p>
       </div>
 
 
@@ -33,10 +32,10 @@
         <h2>Real World Hazzle</h2>
         <ul>
           <li>Huge classes/files/packages</li>
-          <li>Tight coupling</li>
           <li>Difficult to read</li>
+          <li>Tight coupling</li>
           <li>Low cohesion</li>
-          <li>...and stuff that doesn't have a name yet</li>
+          <li>... and all that other stuff</li>
         </ul>
       </div>
 
@@ -51,7 +50,7 @@
           <li>Don't abbreviate</li>
           <li>Keep all entities small</li>
           <li>No classes with more than two instance variables</li>
-          <li>No getter/setter/properties</li>
+          <li>No getters, setters or properties</li>
         </ol>
       </div>
 
@@ -60,11 +59,7 @@
       </div>
 
       <div class="step" data-x="3500" data-y="1000" data-scale="1" data-rotate="90">
-        <p>Applying these  rules is really hard.</p>
-      </div>
-
-      <div class="step sub" data-x="3350" data-y="1040" data-scale="1" data-rotate="90">
-        <p>That's why we're here!</p>
+        <p>This is really hard.</p>
       </div>
 
       <div class="step" data-x="4500" data-y="1000" data-rotate="90">
@@ -74,7 +69,7 @@
 
       <div class="step" data-x="4500" data-y="2500" data-rotate="90">
         <pre><code data-language="java">class Board {
-    private int[][] data = /* ... */
+    private int[][] data = /* ... */;
 
     public String toString() {
         StringBuffer buffer = new StringBuffer();
@@ -92,16 +87,19 @@
       <div class="step" data-x="4500" data-y="4000" data-rotate="90">
         <pre><code data-language="java">class Board {
     private int[][] data = /* ... */;
+
     public String toString() {
         StringBuffer buffer = new StringBuffer();
         collectRows(buffer);
         return buffer.toString();
     }
+
     private collectRows(StringBuffer buffer) {
         for (int i = 0; i &lt; 10; i++) {
             collectRow(buffer, i);
         }
     }
+
     private collectRow(StringBuffer buffer, int row) {
         for (int j = 0; j &lt; 10; j++) {
             buffer.append(data[row][j]);
@@ -131,14 +129,14 @@ if (status == DONE) {
       </div>
 
       <div class="step" data-x="5500" data-y="4000" data-rotate="90">
-        <pre><code data-language="java">Action action = service.someOperation();
+        <pre><code data-language="java">Performable action = service.someOperation();
 action.perform();
 
-interface Action {
+interface Performable {
     void perform();
 }
 
-class NotFoundAction implements Action {
+class NotFoundAction implements Performable {
     public void perform() {
         // Do stuff.
     }
@@ -152,9 +150,9 @@ class NotFoundAction implements Action {
       </div>
 
       <div class="step" data-x="6500" data-y="2500" data-rotate="90">
-        <pre><code data-language="java">interface MyTime {
-    public setHour(int hour);
-    public setYear(int year);
+        <pre><code data-language="java">interface Temporal {
+    public void setHour(int hour);
+    public void setYear(int year);
 }
 </code></pre>
       </div>
@@ -169,9 +167,9 @@ class Hour {
     public static valueOf(int hour) { /* ... */ }
 }
 
-interface MyTime {
-    public set(Hour hour);
-    public set(Year year);
+interface Temporal {
+    public void set(Hour hour);
+    public void set(Year year);
 }
 </code></pre>
       </div>
@@ -184,6 +182,7 @@ interface MyTime {
       <div class="step" data-x="7500" data-y="2500" data-rotate="90">
         <pre><code data-language="java">public class Person {
     List&lt;Groups&gt; groups;
+
     public join(Group group) {
         groups.add(group);
     }
@@ -198,6 +197,7 @@ interface MyTime {
 
 public class Person {
     GroupMemberships memberships = /* ... */;
+
     public join(Group group) {
         memberships.join(group);
     }
@@ -211,18 +211,18 @@ public class Person {
       </div>
 
       <div class="step" data-x="8500" data-y="2500" data-rotate="90">
-        <pre><code data-language="java">class Board {
-    class Piece {
-        String representation;
-    }
+        <pre><code data-language="java">class Piece {
+    String representation;
+}
 
-    class Location {
-        Piece current;
-    }
+class Location {
+    Piece current;
+}
 
+class Board {
     String boardRepresentation() {
         StringBuffer buffer = new StringBuffer();
-        for (Location location : squares()) {
+        for (Location location : getSquares()) {
             buffer.append(location.current.representation);
         }
         return buffer.toString();
@@ -232,19 +232,21 @@ public class Person {
       </div>
 
       <div class="step" data-x="8500" data-y="4000" data-rotate="90">
-        <pre><code data-language="java">class Board {
-    class Piece {
-        String representation;
-        void addTo(StringBuffer buffer) {
-            buffer.append(representation);
-        }
+        <pre><code data-language="java">class Piece {
+    String representation;
+    void addTo(StringBuffer buffer) {
+        buffer.append(representation);
     }
-    class Location {
-        Piece current;
-        void addTo(StringBuffer buffer) {
-            current.addTo(buffer);
-        }
+}
+
+class Location {
+    Piece current;
+    void addTo(StringBuffer buffer) {
+        current.addTo(buffer);
     }
+}
+
+class Board {
     String boardRepresentation() {
         StringBuffer buffer = new StringBuffer();
         for (Location location : squares()) {
@@ -264,7 +266,7 @@ public class Person {
         <pre><code data-language="java">ManagementBean mgmntBn = /* ... */;
 MutableButton mtblBtn = /* ... */;
 
-if (mgntBn.isManager() && mtblBtn.isPressed()) {
+if (mgmntBn.isManager() && mtblBtn.isPressed()) {
     // Cut costs.
 }
 </code></pre>
@@ -272,7 +274,7 @@ if (mgntBn.isManager() && mtblBtn.isPressed()) {
 
       <div class="step" data-x="9500" data-y="4000" data-rotate="90">
         <pre><code data-language="java">ManagementBean managementBean = /* ... */;
-MutableAgentButton mutableButton = /* ... */;
+MutableButton mutableButton = /* ... */;
 
 boolean orderedByManager() {
     return managementBean.isManager() && mutableButton.isPressed();
@@ -306,10 +308,8 @@ if (orderedByManager()) {
         <pre><code data-language="java">class Person {
     String firstName;
     String lastName;
-    int birthYear;
-    int birthMonth;
-    int birthDay;
-    /* ... */
+    String email;
+    String phone;
 }
 </code></pre>
       </div>
@@ -320,16 +320,14 @@ if (orderedByManager()) {
     String lastName;
 }
 
-class Date {
-    int year;
-    int month;
-    int day;
+class ContactInfo {
+    String email;
+    String phone;
 }
 
 class Person {
     Name name;
-    Date birthDate;
-    /* ... */
+    ContactInfo contactInfo;
 }
 </code></pre>
       </div>
@@ -344,13 +342,14 @@ class Person {
     private String name;
     private Long id;
 
-    Long getId() {
+    public Long getId() {
         return id;
     }
 }
 
 class PersonDatabase {
-    HashMap&lt;Long, Person&gt; persons = ...
+    private HashMap&lt;Long, Person&gt; persons = /* ... */;
+
     public void addPerson(Person p) {
         map.put(p.getId(), p);
     }
