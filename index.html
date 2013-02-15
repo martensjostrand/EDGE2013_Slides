@@ -18,8 +18,8 @@
       <div class="step slide" data-x="0" data-y="700">
         <h2>Who are we, and why?</h2>
         <ul>
-          <li>Sebastian Lundström</li>
           <li>Mårten Sjöstrand</li>
+          <li>Sebastian Lundström</li>
         </ul>
       </div>
 
@@ -79,6 +79,7 @@
                 buffer.append("\n");
             }
         }
+        return buffer.toString();
     }
 }
 </code></pre>
@@ -94,13 +95,13 @@
         return buffer.toString();
     }
 
-    private collectRows(StringBuffer buffer) {
+    private void collectRows(StringBuffer buffer) {
         for (int i = 0; i &lt; 10; i++) {
             collectRow(buffer, i);
         }
     }
 
-    private collectRow(StringBuffer buffer, int row) {
+    private void collectRow(StringBuffer buffer, int row) {
         for (int j = 0; j &lt; 10; j++) {
             buffer.append(data[row][j]);
         }
@@ -129,10 +130,7 @@ if (status == DONE) {
       </div>
 
       <div class="step" data-x="5500" data-y="4000" data-rotate="90">
-        <pre><code data-language="java">Performable action = service.someOperation();
-action.perform();
-
-interface Performable {
+        <pre><code data-language="java">interface Performable {
     void perform();
 }
 
@@ -141,6 +139,9 @@ class NotFoundAction implements Performable {
         // Do stuff.
     }
 }
+
+Performable action = service.someOperation();
+action.perform();
 </code></pre>
       </div>
 
@@ -158,18 +159,19 @@ class NotFoundAction implements Performable {
       </div>
 
       <div class="step" data-x="6500" data-y="4000" data-rotate="90">
-        <pre><code data-language="java">class Year {
-    public static valueOf(int year) { /* ... */ }
-    public boolean isLeap() { /* ... */ }
+        <pre><code data-language="java">interface Temporal {
+    public void set(Hour hour);
+    public void set(Year year);
 }
 
 class Hour {
-    public static valueOf(int hour) { /* ... */ }
+    private int hour;
 }
 
-interface Temporal {
-    public void set(Hour hour);
-    public void set(Year year);
+class Year {
+    private int year;
+
+    public boolean isLeap() { /* ... */ }
 }
 </code></pre>
       </div>
@@ -180,10 +182,12 @@ interface Temporal {
       </div>
 
       <div class="step" data-x="7500" data-y="2500" data-rotate="90">
-        <pre><code data-language="java">public class Person {
-    List&lt;Groups&gt; groups;
+        <pre><code data-language="java">class Person {
+    private List&lt;Groups&gt; groups;
+    private String name;
+    private String email;
 
-    public join(Group group) {
+    public void join(Group group) {
         groups.add(group);
     }
 }
@@ -191,14 +195,24 @@ interface Temporal {
       </div>
 
       <div class="step" data-x="7500" data-y="4000" data-rotate="90">
-        <pre><code data-language="java">public class GroupMemberships {
-    List&lt;Group&gt; memberships = /* ... */;
+        <pre><code data-language="java">class GroupMemberships {
+    private List&lt;Group&gt; memberships = /* ... */;
+
+    public void join(Group group) {
+        memberships.add(group);
+    }
+
+    public Iterator&lt;Group&gt; getActiveGroups() {
+        /* ... */
+    }
 }
 
-public class Person {
-    GroupMemberships memberships = /* ... */;
+class Person {
+    private GroupMemberships memberships = /* ... */;
+    private String name;
+    private String email;
 
-    public join(Group group) {
+    public void join(Group group) {
         memberships.join(group);
     }
 }
@@ -212,18 +226,18 @@ public class Person {
 
       <div class="step" data-x="8500" data-y="2500" data-rotate="90">
         <pre><code data-language="java">class Piece {
-    String representation;
+    public String representation;
 }
 
 class Location {
-    Piece current;
+    public Piece piece;
 }
 
 class Board {
-    String boardRepresentation() {
+    public String boardRepresentation() {
         StringBuffer buffer = new StringBuffer();
-        for (Location location : getSquares()) {
-            buffer.append(location.current.representation);
+        for (Location location : getLocations()) {
+            buffer.append(location.piece.representation);
         }
         return buffer.toString();
     }
@@ -233,23 +247,23 @@ class Board {
 
       <div class="step" data-x="8500" data-y="4000" data-rotate="90">
         <pre><code data-language="java">class Piece {
-    String representation;
-    void addTo(StringBuffer buffer) {
+    private String representation;
+    public void addTo(StringBuffer buffer) {
         buffer.append(representation);
     }
 }
 
 class Location {
-    Piece current;
-    void addTo(StringBuffer buffer) {
-        current.addTo(buffer);
+    private Piece piece;
+    public void addTo(StringBuffer buffer) {
+        piece.addTo(buffer);
     }
 }
 
 class Board {
-    String boardRepresentation() {
+    public String boardRepresentation() {
         StringBuffer buffer = new StringBuffer();
-        for (Location location : getSquares()) {
+        for (Location location : getLocations()) {
             location.addTo(buffer);
         }
         return buffer.toString();
@@ -300,6 +314,14 @@ if (orderedByManager()) {
 </code></pre>
       </div>
 
+      <div class="step" data-x="10500" data-y="4000" data-rotate="90">
+        <pre><code data-language="java">/*
+ * NO CLASS OVER 50 LINES.
+ * NO PACKAGE OVER 10 FILES.
+ */
+</code></pre>
+      </div>
+
       <div class="step" data-x="11500" data-y="1000" data-rotate="90">
         <strong>8</strong>
         <h2>No class with more than two instance variables</h2>
@@ -317,8 +339,8 @@ if (orderedByManager()) {
 
       <div class="step" data-x="11500" data-y="4000" data-rotate="90">
         <pre><code data-language="java">class Name {
-    String firstName;
-    String lastName;
+    String first;
+    String last;
 }
 
 class ContactInfo {
@@ -364,19 +386,19 @@ class Person {
     private String name;
     private Long id;
 
-    public addTo(PersonStorage storage) {
-        storage.add(id, this);
+    public void addTo(PersonDatabase database) {
+        database.add(id, this);
     }
 }
 
 class PersonDatabase {
-    HashMap&lt;Long, Person&gt; persons = /* ... */;
+    private HashMap&lt;Long, Person&gt; persons = /* ... */;
 
     public void addPerson(Person p) {
         p.addTo(this);
     }
 
-    public add(Long id, Person p) {
+    public void add(Long id, Person p) {
         persons.put(id, p);
     }
 }
