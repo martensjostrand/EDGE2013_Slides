@@ -46,6 +46,12 @@ ol {
 	padding: 40px;
 }
 
+.slide h3 {
+	margin-top: 80px;
+	font-size: 70px;
+	color: #c33;
+}
+
 .step.sub.future, .step.sub.past {
 	display: none;
 }
