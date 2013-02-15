@@ -249,7 +249,7 @@ class Location {
 class Board {
     String boardRepresentation() {
         StringBuffer buffer = new StringBuffer();
-        for (Location location : squares()) {
+        for (Location location : getSquares()) {
             location.addTo(buffer);
         }
         return buffer.toString();
@@ -277,7 +277,8 @@ if (mgmntBn.isManager() && mtblBtn.isPressed()) {
 MutableButton mutableButton = /* ... */;
 
 boolean orderedByManager() {
-    return managementBean.isManager() && mutableButton.isPressed();
+    return managementBean.isManager() &&
+        mutableButton.isPressed();
 }
 
 if (orderedByManager()) {

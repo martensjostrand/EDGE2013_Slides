@@ -30,13 +30,14 @@ h1, h2, h3 {
 
 .step {
 	width: 1000px;
-	height: 600px;
+	height: 620px;
 	font-size: 4em;
 }
 
 ul,
 ol {
 	font-size: 0.6em;
+	margin-left: 40px;
 }
 
 .slide {
@@ -54,9 +55,9 @@ ol {
 }
 
 pre {
-	font-size: 22px;
+	font-size: 27px;
 	border-radius: 15px;
 	padding: 1em;
 	box-shadow: 5px 5px 5px #888;
-	line-height: 1.2em;
+	line-height: 1.1em;
 }
